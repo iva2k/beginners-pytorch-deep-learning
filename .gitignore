@@ -1,4 +1,5 @@
 images/*
+*/saved/
 
 .cache/clangd/
 .DS_Store
