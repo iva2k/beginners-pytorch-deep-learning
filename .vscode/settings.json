@@ -1,0 +1,83 @@
+{
+    "terminal.integrated.automationProfile.windows": {
+        // "path": "C:\\msys64\\usr\\bin\\bash.exe",
+        "path": "${env:windir}\\Sysnative\\cmd.exe",
+    },
+    "python.defaultInterpreterPath": "${env:CONDA_ENV}",
+    "terminal.integrated.env.linux": {
+        "UNUSED_PYTHONPATH": "${workspaceFolder}/lib:${workspaceFolder}/pi_base/lib"
+    },
+    "terminal.integrated.env.osx": {
+        "UNUSED_PYTHONPATH": "${workspaceFolder}/lib:${workspaceFolder}/pi_base/lib"
+    },
+    "terminal.integrated.env.windows": {
+        "UNUSED_PYTHONPATH": "${workspaceFolder}/lib;${workspaceFolder}/pi_base/lib"
+    },
+    "python.analysis.extraPaths": [
+        "${workspaceFolder}",
+        "${workspaceFolder}/lib",
+        "${workspaceFolder}/pi_base/lib"
+    ],
+    "python.autoComplete.extraPaths": [
+        "${workspaceFolder}",
+        "${workspaceFolder}/lib",
+        "${workspaceFolder}/pi_base/lib"
+    ],
+    // to fix 'Timeout waiting for debugger connections':
+    "python.terminal.activateEnvironment": false,
+    "[python]": {
+        // "editor.codeActionsOnSave": {"source.fixAll": "always", "source.organizeImports": "always" },
+        "editor.codeActionsOnSave": {
+            "source.fixAll": "always",
+            "source.organizeImports": "never"
+        },
+        // "editor.defaultFormatter": "ms-python.autopep8",
+        "editor.defaultFormatter": "charliermarsh.ruff",
+        "editor.formatOnSave": true,
+        "editor.formatOnSaveMode": "modificationsIfAvailable",
+        "editor.wordWrap": "off",
+        "editor.wordWrapColumn": 200,
+    },
+    "pylint.args": [
+        "--max-line-length=200",
+        "--disable=C0103,C0111,C0301,C0302,C0321,W0511,W0702,W0703,W0612,W0613",
+        "--init-hook",
+        "import sys; sys.path.append(\"./lib\");"
+    ],
+    "autopep8.args": [
+        "--max-line-length=200"
+    ],
+    "svgPreview.style": {
+        "html": {
+            "background": "#808080"
+        }
+    },
+    "svg.preview.background": "transparent",
+    "evenBetterToml.schema.associations": {
+        "pyproject.toml": "https://json.schemastore.org/pyproject.json"
+    },
+    "python.testing.pytestEnabled": true,
+    "python.testing.pytestArgs": [
+        "."
+    ],
+    "python.testing.unittestEnabled": false,
+    "python.testing.unittestArgs": [
+        "-v",
+        "-s",
+        ".",
+        "-p",
+        "*test*.py"
+    ],
+    "esbonio.sphinx.buildDir": "${workspaceFolder}/docs/_build/html",
+    "esbonio.sphinx.confDir": "${workspaceFolder}/docs",
+    "esbonio.sphinx.srcDir": "${workspaceFolder}/docs",
+    "esbonio.server.enabled": true,
+    "mypy.enabled": false,
+    "ruff.organizeImports": false,
+    "python.analysis.fixAll": [
+        // "ruff"
+        "source.convertImportFormat",
+        "source.unusedImports",
+    ],
+    "python.analysis.typeCheckingMode": "standard"
+}
